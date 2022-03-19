@@ -57,7 +57,10 @@ def calc_res(n1,op,n2):
         n1 = print_file("num1")
         n2 = print_file("num2")
         if n2 == "":
-            res = int(n1)
+            try:
+                res = int(n1)
+            except:
+                res = 0
         else:
             res = int(n1) + int(n2)
             write_id("res",str(res))
@@ -69,7 +72,10 @@ def calc_res(n1,op,n2):
         n1 = print_file("num1")
         n2 = print_file("num2")
         if n2 == "":
-            res = int(n1)
+            try:
+                res = int(n1)
+            except:
+                res = 0
         else:
             res = int(n1) - int(n2)
             write_id("res",str(res))
@@ -80,7 +86,10 @@ def calc_res(n1,op,n2):
         n1 = print_file("num1")
         n2 = print_file("num2")
         if n2 == "":
-            res = int(n1)
+            try:
+                res = int(n1)
+            except:
+                res = 0
         else:
             res = int(n1) * int(n2)
             write_id("res",str(res))
@@ -91,15 +100,19 @@ def calc_res(n1,op,n2):
         n1 = print_file("num1")
         n2 = print_file("num2")
         if n2 == "":
-            res = int(n1)
+            try:
+                res = int(n1)
+            except:
+                res = 0
         else:
             res = int(n1) / int(n2)
             write_id("res",str(int(res)))
             write_id("num1",str(res))
             write_id("num2","")
         print(res,n1,n2)
-# Create a function with one parameter, i.e., of
-# the text you want to show when button is clicked
+    if op == "":
+        write_id("res","0")
+
 def which_button(b,display_res):
     bp = print_file("bpress")
     bpp = int(bp)
