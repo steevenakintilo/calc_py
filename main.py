@@ -33,10 +33,14 @@ def check_file():
     else:
         return (0)
 
+
 def write_num(x):
+    write_id("op","")
+    write_id("check","num")
     n1 = print_file("num1")
     n2 = print_file("num2")
     res = print_file("res")
+    check = print_file("check")
     #write_id("op","")
     if x == -1:
         write_id("num1","")
@@ -52,7 +56,7 @@ def write_num(x):
         
 def calc_res(n1,op,n2):
     res = 0
-
+    r = print_file("res")
     if op == "+":
         n1 = print_file("num1")
         n2 = print_file("num2")
@@ -111,7 +115,7 @@ def calc_res(n1,op,n2):
             write_id("num2","")
         print(res,n1,n2)
     if op == "":
-        write_id("res","0")
+        write_id("res",r)
 
 def which_button(b,display_res):
     bp = print_file("bpress")
@@ -130,6 +134,8 @@ def which_button(b,display_res):
         write_id("op","/")
         bpp = bpp + 1
         write_id("bpress",str(bpp))
+        write_id("check","op")
+
     elif b == "4":
         write_num("4")
     elif b == "5":
@@ -140,6 +146,8 @@ def which_button(b,display_res):
         write_id("op","*")
         bpp = bpp + 1
         write_id("bpress",str(bpp))
+        write_id("check","op")
+
     elif b == "8":
         write_num("1")
     elif b == "9":
@@ -150,6 +158,8 @@ def which_button(b,display_res):
         write_id("op","-")
         bpp = bpp + 1
         write_id("bpress",str(bpp))
+        write_id("check","op")
+
     elif b == "12":
         write_num("0")
     elif b == "13":
@@ -160,10 +170,14 @@ def which_button(b,display_res):
         write_id("op","+")
         bpp = bpp + 1
         write_id("bpress",str(bpp))
+        write_id("check","num")
+
     elif b == "15":
         print("=")
         bpp = bpp + 1
         write_id("bpress",str(bpp))
+        write_id("check","op")
+
     if bpp == 0:
         r = print_file("num1")
     elif bpp == 1:
@@ -174,6 +188,7 @@ def which_button(b,display_res):
     
     
 
+write_id("check","num")
 write_id("num1","")
 write_id("num2","")
 write_id("op","")
