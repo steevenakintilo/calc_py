@@ -37,6 +37,7 @@ def write_num(x):
     n1 = print_file("num1")
     n2 = print_file("num2")
     res = print_file("res")
+    #write_id("op","")
     if x == -1:
         write_id("num1","")
         write_id("num2","")
@@ -51,27 +52,40 @@ def write_num(x):
         
 def calc_res(n1,op,n2):
     res = 0
-    if n1 == "" and op == "+" or op == "-":
-        n1 = "0"
-    if n2 == "" and op == "+" or op == "-":
-        n2 = "0"
-    
-    if n1 == "" and op == "*":
-        n1 = "1"
-    if n2 == "" and op == "*":
-        n2 = "1"
-    
+
     if op == "+":
-        res = int(n1) + int(n2)
-        write_id("res",str(res))
-        print(res)
+        n1 = print_file("num1")
+        n2 = print_file("num2")
+        if n2 == "":
+            res = int(n1)
+        else:
+            res = int(n1) + int(n2)
+            write_id("res",str(res))
+            write_id("num1",str(res))
+            write_id("num2","")
+            
+        print(res,n1,n2)
     if op == "-":
-        res = int(n1) - int(n2)
-        write_id("res",str(res))
-        print(res)
+        n1 = print_file("num1")
+        n2 = print_file("num2")
+        if n2 == "":
+            res = int(n1)
+        else:
+            res = int(n1) - int(n2)
+            write_id("res",str(res))
+            write_id("num1",str(res))
+            write_id("num2","")
+        print(res,n1,n2)
     if op == "*":
-        res = int(n1) * int(n2)
-        write_id("res",str(res))
+        n1 = print_file("num1")
+        n2 = print_file("num2")
+        if n2 == "":
+            res = int(n1)
+        else:
+            res = int(n1) * int(n2)
+            write_id("res",str(res))
+            write_id("num1",str(res))
+            write_id("num2","")
         print(res,n1,n2)   
     if op == "/":
         n1 = print_file("num1")
@@ -80,8 +94,10 @@ def calc_res(n1,op,n2):
             res = int(n1)
         else:
             res = int(n1) / int(n2)
-        write_id("res",str(int(res)))
-        print(res,n1,n2)   
+            write_id("res",str(int(res)))
+            write_id("num1",str(res))
+            write_id("num2","")
+        print(res,n1,n2)
 # Create a function with one parameter, i.e., of
 # the text you want to show when button is clicked
 def which_button(b,display_res):
