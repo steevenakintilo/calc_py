@@ -15,115 +15,110 @@ def print_file(path):
     return(content)
     f.close()
 
-def write_id(path,x):
+def write_into_file(path,x):
     f = open(path, "w")
     f.write(str(x))
     f.close
 
-def wwrite_id(path,x):
-    f = open(path, "w")
+def wwrite_into_file(path,x):
+    f = open(path, "a")
     f.write(str(x))
     f.close
 
 def check_file():
-    n1 = print_file("num1")
-    n2 = print_file("num2")
-    if n1 != "" and n2 != "":
+    number_one = print_file("num1")
+    number_two = print_file("num2")
+    if number_one != "" and number_two != "":
         return (1)
     else:
         return (0)
 
 
 def write_num(x):
-    write_id("op","")
-    write_id("check","num")
-    n1 = print_file("num1")
-    n2 = print_file("num2")
+    write_into_file("check","num")
+    number_one = print_file("num1")
+    number_two = print_file("num2")
     res = print_file("res")
     check = print_file("check")
-    #write_id("op","")
     if x == -1:
-        write_id("num1","")
-        write_id("num2","")
+        write_into_file("num1","")
+        write_into_file("num2","")
     if x != -1:
-        if n1 != "" and n2 != "":
-            write_id("num1",res)
-            write_id("num2",x)
-        elif n1 == "" and n2 == "":
-            write_id("num1",x)
-        elif n1 != "" and n2 == "":
-            write_id("num2",x)
-        
-def calc_res(n1,op,n2):
+        if check == "op" or check == "num":
+            if number_one != "" and number_two != "":
+                write_into_file("num1",res)
+                write_into_file("num2",x)
+            elif number_one == "" and number_two == "":
+                write_into_file("num1",x)
+            elif number_one != "" and number_two == "":
+                write_into_file("num2",x)    
+def calc_res(number_one,op,number_two):
     res = 0
     r = print_file("res")
     if op == "+":
-        n1 = print_file("num1")
-        n2 = print_file("num2")
-        if n2 == "":
+        number_one = print_file("num1")
+        number_two = print_file("num2")
+        if number_two == "":
             try:
-                res = int(n1)
+                res = int(number_one)
             except:
                 res = 0
         else:
-            res = int(n1) + int(n2)
-            write_id("res",str(res))
-            write_id("num1",str(res))
-            write_id("num2","")
+            res = int(number_one) + int(number_two)
+            write_into_file("res",str(res))
+            write_into_file("num1",str(res))
+            write_into_file("num2","")
             
-        print(res,n1,n2)
     if op == "-":
-        n1 = print_file("num1")
-        n2 = print_file("num2")
-        if n2 == "":
+        number_one = print_file("num1")
+        number_two = print_file("num2")
+        if number_two == "":
             try:
-                res = int(n1)
+                res = int(number_one)
             except:
                 res = 0
         else:
-            res = int(n1) - int(n2)
-            write_id("res",str(res))
-            write_id("num1",str(res))
-            write_id("num2","")
-        print(res,n1,n2)
+            res = int(number_one) - int(number_two)
+            write_into_file("res",str(res))
+            write_into_file("num1",str(res))
+            write_into_file("num2","")
     if op == "*":
-        n1 = print_file("num1")
-        n2 = print_file("num2")
-        if n2 == "":
+        number_one = print_file("num1")
+        number_two = print_file("num2")
+        if number_two == "":
             try:
-                res = int(n1)
+                res = int(number_one)
             except:
                 res = 0
         else:
-            res = int(n1) * int(n2)
-            write_id("res",str(res))
-            write_id("num1",str(res))
-            write_id("num2","")
-        print(res,n1,n2)   
+            res = int(number_one) * int(number_two)
+            write_into_file("res",str(res))
+            write_into_file("num1",str(res))
+            write_into_file("num2","")
     if op == "/":
-        n1 = print_file("num1")
-        n2 = print_file("num2")
-        if n2 == "":
+        number_one = print_file("num1")
+        number_two = print_file("num2")
+        if number_two == "":
             try:
-                res = int(n1)
+                res = int(number_one)
             except:
                 res = 0
         else:
-            res = int(n1) / int(n2)
-            write_id("res",str(int(res)))
-            write_id("num1",str(res))
-            write_id("num2","")
-        print(res,n1,n2)
+            res = int(number_one) / int(number_two)
+            write_into_file("res",str(int(res)))
+            write_into_file("num1",str(res))
+            write_into_file("num2","")
     if op == "":
-        write_id("res",r)
-
+        write_into_file("res",r)
+    print(res,number_one,number_two)
+    
 def which_button(b,display_res):
-    bp = print_file("bpress")
-    bpp = int(bp)
-    n1 = print_file("num1")
-    n2 = print_file("num2")
+    button_pressed = print_file("bpress")
+    number_of_button_pressed = int(button_pressed)
+    number_one = print_file("num1")
+    number_two = print_file("num2")
     op = print_file("op")
-    calc_res(n1,op,n2)
+    calc_res(number_one,op,number_two)
     if b == "0":
         write_num("7")
     elif b == "1":
@@ -131,10 +126,10 @@ def which_button(b,display_res):
     elif b == "2":
         write_num("9")
     elif b == "3":
-        write_id("op","/")
-        bpp = bpp + 1
-        write_id("bpress",str(bpp))
-        write_id("check","op")
+        write_into_file("op","/")
+        number_of_button_pressed = number_of_button_pressed + 1
+        write_into_file("bpress",str(number_of_button_pressed))
+        write_into_file("check","op")
 
     elif b == "4":
         write_num("4")
@@ -143,10 +138,10 @@ def which_button(b,display_res):
     elif b == "6":
         write_num("6")
     elif b == "7":
-        write_id("op","*")
-        bpp = bpp + 1
-        write_id("bpress",str(bpp))
-        write_id("check","op")
+        write_into_file("op","*")
+        number_of_button_pressed = number_of_button_pressed + 1
+        write_into_file("bpress",str(number_of_button_pressed))
+        write_into_file("check","op")
 
     elif b == "8":
         write_num("1")
@@ -155,32 +150,32 @@ def which_button(b,display_res):
     elif b == "10":
         write_num("3")
     elif b == "11":
-        write_id("op","-")
-        bpp = bpp + 1
-        write_id("bpress",str(bpp))
-        write_id("check","op")
+        write_into_file("op","-")
+        number_of_button_pressed = number_of_button_pressed + 1
+        write_into_file("bpress",str(number_of_button_pressed))
+        write_into_file("check","op")
 
     elif b == "12":
         write_num("0")
     elif b == "13":
-        write_id("num1","")
-        write_id("num2","")
-        write_id("bpress","0")
+        write_into_file("num1","")
+        write_into_file("num2","")
+        write_into_file("bpress","0")
     elif b == "14":
-        write_id("op","+")
-        bpp = bpp + 1
-        write_id("bpress",str(bpp))
-        write_id("check","num")
+        write_into_file("op","+")
+        number_of_button_pressed = number_of_button_pressed + 1
+        write_into_file("bpress",str(number_of_button_pressed))
+        write_into_file("check","num")
 
     elif b == "15":
         print("=")
-        bpp = bpp + 1
-        write_id("bpress",str(bpp))
-        write_id("check","op")
+        number_of_button_pressed = number_of_button_pressed + 1
+        write_into_file("bpress",str(number_of_button_pressed))
+        write_into_file("check","op")
 
-    if bpp == 0:
+    if number_of_button_pressed == 0:
         r = print_file("num1")
-    elif bpp == 1:
+    elif number_of_button_pressed == 1:
         r = print_file("num2")    
     else:
         r = print_file("res")
@@ -188,15 +183,15 @@ def which_button(b,display_res):
     
     
 
-write_id("check","num")
-write_id("num1","")
-write_id("num2","")
-write_id("op","")
-write_id("bpress","0")
+write_into_file("check","num")
+write_into_file("num1","")
+write_into_file("num2","")
+write_into_file("op","")
+write_into_file("bpress","0")
 num_to_display = print_file("num1")
 posx = 0
 posy = 50
-but = []
+button_list = []
 px = []
 py = []
 res = 0
@@ -215,12 +210,12 @@ display_res = tkinter.Label(text=num_to_display,width=0,height=0)
 display_res.grid()
 
 for i in range(16):
-    but.append(" ")
-for i in range(len(but)):
-    but[i] = Button(app, text=button_name[i],
+    button_list.append(" ")
+for i in range(len(button_list)):
+    button_list[i] = Button(app, text=button_name[i],
                 command=lambda m=str(i): which_button(m,display_res))
 
-    but[i].place(x=px[i], y=py[i])
+    button_list[i].place(x=px[i], y=py[i])
     
 app.geometry("200x250")
 app.mainloop()
