@@ -180,8 +180,9 @@ def which_button(b,display_res):
     else:
         r = print_file("res")
     display_res["text"] = r
-    
-    
+
+def size_1():
+   text.config(font=('Helvatical bold',20))
 
 write_into_file("check","num")
 write_into_file("num1","")
@@ -196,6 +197,7 @@ px = []
 py = []
 res = 0
 button_name = ["7","8","9","/","4","5","6","x","1","2","3","-","0","C","+","="]
+color_list = ["grey","grey","grey","brown","grey","grey","grey","brown","grey","grey","grey","brown","grey","yellow","brown","orange"]
 for i in range(16):
     posx = posx + 50
     if i % 4 == 0:
@@ -206,13 +208,13 @@ for i in range(16):
     py.append(posy)
 
 
-display_res = tkinter.Label(text=num_to_display,width=0,height=0)
+display_res = tkinter.Label(text=num_to_display,fg="blue")
 display_res.grid()
 
 for i in range(16):
     button_list.append(" ")
 for i in range(len(button_list)):
-    button_list[i] = Button(app, text=button_name[i],
+    button_list[i] = Button(app, text=button_name[i],bg=color_list[i], fg="white",
                 command=lambda m=str(i): which_button(m,display_res))
 
     button_list[i].place(x=px[i], y=py[i])
